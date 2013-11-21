@@ -15,16 +15,10 @@
 </head>
 <body>
 <h1> PuppyPalooza </h1>
+
+
     {% block sidebar %}
-        {% if request.session.user %}
-
-
-            Include logged bar
-
-         {% else %}
-
             {% include "base/sidebar.html" %}
-        {% endif %}
     {% endblock %}
 
      <section class="main_section" >
@@ -33,11 +27,13 @@
 
          {% endblock %}
 
-        {% if request.session.user %}
-
-
+        {% if request.user.is_authenticated %}
+            <div class="login_form">
+            <h2>Hello {{ request.user.username }}</h2>
+            <a href="{% url "login.views.disconnect" %}"> <strong> Logout ! </strong> </a>
+            </div>
          {% else %}
-         <form action = "" method="POST" class = "login_form">
+         <form action = "{% url "login.views.connect" %}" method="POST" class = "login_form">
                 {% csrf_token %}
                 <label for= "username"> Username </label>
                 <input type="text" name = "username"  id = "username"/>
@@ -49,5 +45,8 @@
 
     </section>
 
+    {% if notify %}
+           <h1> {{ message }} </h1>
+    {% endif %}
 </body>
 </html>

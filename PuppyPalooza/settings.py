@@ -134,6 +134,7 @@ INSTALLED_APPS = (
 PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
 PAYPAL_EMAIL = "yourpaypalemail@example.com"
 PAYPAL_CURRENCY_CODE= ""
+PAYPAL_URL = ""
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

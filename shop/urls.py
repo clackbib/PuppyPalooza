@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('shop.views',
     url(r'^$', 'shop_home'),
+    url(r'^checkout','checkout'),
     # Examples:
     # url(r'^$', 'PuppyPalooza.views.home', name='home'),
     # url(r'^PuppyPalooza/', include('PuppyPalooza.foo.urls')),

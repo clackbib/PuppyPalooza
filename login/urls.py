@@ -4,13 +4,10 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
-    #HOME URL
-    url(r'^$', 'home.views.home_page'),
-    url(r'^home/', include('home.urls')),
-    url(r'^shop/', include('shop.urls')),
-    url(r'^cart/', include('cart.urls')),
-    url(r'member/', include('login.urls')),
+urlpatterns = patterns('login.views',
+
+    url(r'^$', 'connect'),
+    url(r'^disconnect', 'disconnect'),
     # Examples:
     # url(r'^$', 'PuppyPalooza.views.home', name='home'),
     # url(r'^PuppyPalooza/', include('PuppyPalooza.foo.urls')),
