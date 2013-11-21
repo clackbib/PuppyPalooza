@@ -8,7 +8,7 @@ from shop.models import Puppy
 def home_page(request):
     max_count = Puppy.objects.all().count()
     id = random.randint(1, max_count)
-    day_puppy = Puppy.objects.get(id = 1)
+    day_puppy = Puppy.objects.get(id = id)
     if request.method == 'POST':
         stuff = "done"
     else:

@@ -1,11 +1,17 @@
+html
+{
+    background-color: #404040;
+}
 body{
     height: 700px;
     width:800px;
+    padding:20px;
     margin-right: auto;
     margin-left: auto;
     border-left: solid 1px dodgerblue;
     border-right: solid 1px dodgerblue;
-    background-image: linear-gradient(to bottom, #dddddd 0%, #ffffff 100%);
+    /*background-image: linear-gradient(to bottom, #dddddd 0%, #ffffff 100%);*/
+    background-color: #a1b9e9;
 }
 .navbar
 {
@@ -14,6 +20,7 @@ body{
     margin-bottom: 10px;
     width:700px;
     border-bottom: solid 1px dodgerblue;
+
 }
 .navbar ul li{
     text-align: center;
@@ -45,14 +52,16 @@ body{
     width: 750px;
     padding: 20px;
 }
-.puppy_day
+.main_article
 {
     border-radius: 10px;
     display: inline-block;
     width: 470px;
+    height: 500px;
     padding: 20px;
     margin-right: 5px;
     background-color: white;
+    overflow: scroll;
 }
 .login_form
 {
@@ -61,7 +70,35 @@ body{
     width:200px;
     border-radius: 10px;
     display: inline-block;
-    background-color: white;
+    background-color: dodgerblue;
+    color: white;
+    opacity: .8;
+}
+.heading
+{
+    padding-bottom: 3px;
+    border-bottom: solid 1px dodgerblue;
+}
+.puppy_show
+{
+    width: 200px;
+}
+.puppy_details, .puppy_show
+{
+    display: inline-block;
+    border: solid 1px dodgerblue;
+    background-color: dodgerblue;
+    padding:5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+.puppy_details
+{
+    vertical-align: top;
+    width:200px;
+    overflow: auto;
+    color: white;
+    text-shadow: 0 -1px 1px black;
 }
 
 

@@ -4,12 +4,8 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
-    #HOME URL
-    url(r'^$', 'home.views.home_page'),
-    url(r'^home/', include('home.urls')),
-    url(r'^shop/', include('shop.urls')),
-    url(r'^car/', include('cart.urls')),
+urlpatterns = patterns('shop.views',
+    url(r'^$', 'shop_home'),
     # Examples:
     # url(r'^$', 'PuppyPalooza.views.home', name='home'),
     # url(r'^PuppyPalooza/', include('PuppyPalooza.foo.urls')),

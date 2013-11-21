@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+    PuppyPalooza Shop
+{% endblock %}
+
+{% block main_article %}
+
+    <article class="main_article">
+                <h2 class="heading"> Shop </h2>
+                {% for p in puppies %}
+                    <div class="puppy_show">
+                        <img src = "/static/images/puppies/{{ p.picture_name }}" height="200px" width="200px" alt="{{ p.puppy_name }}"/>
+                        {{ p.buy_form.render}}
+                    </div>
+                    <aside class="puppy_details">
+                            <ul>
+                                <li> <strong> Puppy Name:</strong> {{ p.puppy_name }}</li>
+                                <li><strong>Description:</strong> {{ p.description }}</li>
+                                <li><strong>Quantity Available:
+                                    </strong>
+                                    {% if p.quantity_available %}
+                                        {{ p.quantity_available }}
+                                    {% else %}
+                                    <strong style = "color:red"> Out of Stock !
+                                    {% endif %}
+                                    </strong>
+                                </li>
+                                <li><strong>Price:</strong> ${{ p.price }}</li>
+                            <ul>
+                    </aside>
+                {% endfor %}
+    </article>
+{% endblock %}

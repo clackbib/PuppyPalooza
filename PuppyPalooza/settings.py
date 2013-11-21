@@ -124,12 +124,16 @@ INSTALLED_APPS = (
     'home',
     'login',
     'shop',
+    'paypal.standard.ipn',
+    'cart',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
-
+PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
+PAYPAL_EMAIL = "yourpaypalemail@example.com"
+PAYPAL_CURRENCY_CODE= ""
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

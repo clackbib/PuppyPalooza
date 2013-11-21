@@ -5,20 +5,10 @@
     Welcome to PuppyPalooza!
 {% endblock %}
 
-{% block content %}
+{% block main_article %}
+            <article class="main_article">
+                <h2 class="heading"> Puppy of the Day ! </h2>
+                <img src = "static/images/puppies/{{ day_puppy.picture_name }}" height="400px" width="400px" alt="Puppy of the Day!"/>
 
-    <section class="main_section" >
-
-        <article class="puppy_day">
-            <h2 class="heading"> Puppy of the Day ! </h2>
-               <img src = "static/images/puppies/{{ day_puppy.picture_name }}" height="400px" width="400px" alt="Puppy of the Day!"/>
-        </article>
-
-         <form action = "" method="POST" class = "login_form">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Log in!">
-         </form>
-
-    </section>
+            </article>
 {% endblock %}

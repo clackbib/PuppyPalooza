@@ -14,8 +14,9 @@
     </title>
 </head>
 <body>
+<h1> PuppyPalooza </h1>
     {% block sidebar %}
-        {% if request.session.logged %}
+        {% if request.session.user %}
 
 
             Include logged bar
@@ -25,10 +26,28 @@
             {% include "base/sidebar.html" %}
         {% endif %}
     {% endblock %}
-    {% block content%}
+
+     <section class="main_section" >
+
+         {% block main_article %}
+
+         {% endblock %}
+
+        {% if request.session.user %}
 
 
-    {% endblock %}
+         {% else %}
+         <form action = "" method="POST" class = "login_form">
+                {% csrf_token %}
+                <label for= "username"> Username </label>
+                <input type="text" name = "username"  id = "username"/>
+                <label for= "password"> Password </label>
+                <input type = "password" name =  "password" id = "password"/>
+                <input type="submit" value="Log in!"/>
+         </form>
+     {% endif %}
+
+    </section>
 
 </body>
 </html>
