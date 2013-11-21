@@ -1,0 +1,67 @@
+body{
+    height: 700px;
+    width:800px;
+    margin-right: auto;
+    margin-left: auto;
+    border-left: solid 1px dodgerblue;
+    border-right: solid 1px dodgerblue;
+    background-image: linear-gradient(to bottom, #dddddd 0%, #ffffff 100%);
+}
+.navbar
+{
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width:700px;
+    border-bottom: solid 1px dodgerblue;
+}
+.navbar ul li{
+    text-align: center;
+    display: inline-block;
+    width:100px;
+    border-radius: 20px;
+    background-color: dodgerblue;
+    border:solid 1px rgba(0,0,0,0);
+    font-weight: bold;
+    padding: 5px;
+    opacity: .6;
+    transition-delay:.2s;
+    transition-duration:.2s;
+}
+.navbar ul li:hover
+{
+    opacity: 1;
+}
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+    text-shadow: 0 -1px 1px black;
+}
+/* SECTION ELEMENTS *******************************************************************/
+.main_section
+{
+    margin-left:auto;
+    margin-right: auto;
+    width: 750px;
+    padding: 20px;
+}
+.puppy_day
+{
+    border-radius: 10px;
+    display: inline-block;
+    width: 470px;
+    padding: 20px;
+    margin-right: 5px;
+    background-color: white;
+}
+.login_form
+{
+    padding: 10px;
+    vertical-align: top;
+    width:200px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+

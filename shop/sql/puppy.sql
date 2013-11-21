@@ -1,0 +1,1 @@
+INSERT INTO home_puppy (puppy_name, description, price,quantity_available,picture_name) values ("Bulldog", "Stuff", 1200.0,45,"1.png")
