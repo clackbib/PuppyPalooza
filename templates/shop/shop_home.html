@@ -28,7 +28,11 @@
                                     </strong>
                                 </li>
                                 <li><strong>Price:</strong> ${{ p.price }}</li>
-                            <ul>
+
+                                {% if not request.user.is_authenticated %}
+                                <li><a href="{% url "shop.views.add_puppy" p.id %}" class ="add_to_cart"> Add to Card</a></li>
+                                 {% endif %}
+                            </ul>
                     </aside>
                 {% endfor %}
     </article>

@@ -7,6 +7,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('shop.views',
     url(r'^$', 'shop_home'),
     url(r'^checkout','checkout'),
+    url(r'^add_to_cart/(?P<puppy_id>\d+)/','add_puppy'),
     # Examples:
     # url(r'^$', 'PuppyPalooza.views.home', name='home'),
     # url(r'^PuppyPalooza/', include('PuppyPalooza.foo.urls')),

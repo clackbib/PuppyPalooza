@@ -5,6 +5,9 @@
         <li> <a href = ""> Gallery</a></li>
          <li> <a href = "{% url "shop.views.shop_home" %}"> Shop</a></li>
          <li> <a href = ""> Contact Us</a></li>
+            {% if request.session.cart_count %}
+                <li class="cart_icon"> Cart ({{ request.session.cart_count }}) </li>
+            {% endif %}
         {% endblock %}
      </ul>
 </nav>

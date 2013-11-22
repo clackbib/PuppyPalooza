@@ -1,15 +1,11 @@
 # Create your views here.
-import random
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render,redirect
 from paypal.standard.forms import PayPalPaymentsForm
 from shop.models import Puppy
 from cart.models import CartItem
 
 def shop_home(request):
-    id = random.randint(1, 1)
-    day_puppy = Puppy.objects.get(id = id)
-
-    CartItem.objects.add_to_cart(day_puppy,request.user, day_puppy.price,None)
     puppies = Puppy.objects.all()
 
     for p in puppies:
@@ -25,6 +21,19 @@ def shop_home(request):
 
     return render(request, "shop/shop_home.html", locals())
 
+@login_required(login_url="home.views.home")
+def add_puppy(request,puppy_id):
+    puppy = Puppy.objects.get(id = puppy_id)
+    CartItem.objects.add_to_cart(puppy,request.user, puppy.price,None)
+    count = 0
+    items = CartItem.objects.filter(user = request.user)
+    for i in items:
+        count = count + 1
+
+    request.session['cart_count'] = count
+    return redirect("shop.views.shop_home")
+
+@login_required(login_url="home.views.home")
 def checkout(request):
     items = CartItem.objects.filter(user = request.user)
     item_names = ""
