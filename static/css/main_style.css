@@ -126,4 +126,9 @@ body{
     border-radius: 20px;
     font-style: oblique;
 }
+.links
+{
+    border-top: dotted 1px black;
+    padding-top: 20px;
+}
 
