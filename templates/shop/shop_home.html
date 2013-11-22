@@ -12,7 +12,9 @@
                 {% for p in puppies %}
                     <div class="puppy_show">
                         <img src = "/static/images/puppies/{{ p.picture_name }}" height="200px" width="200px" alt="{{ p.puppy_name }}"/>
+                        {% if p.quantity_available %}
                         {{ p.buy_form.render}}
+                        {% endif %}
                     </div>
                     <aside class="puppy_details">
                             <ul>
@@ -29,8 +31,8 @@
                                 </li>
                                 <li><strong>Price:</strong> ${{ p.price }}</li>
 
-                                {% if not request.user.is_authenticated %}
-                                <li><a href="{% url "shop.views.add_puppy" p.id %}" class ="add_to_cart"> Add to Card</a></li>
+                                {% if  request.user.is_authenticated and p.quantity_available %}
+                                <li><a href="{% url "shop.views.add_puppy" p.id %}" class ="add_to_cart"> Add to Cart</a></li>
                                  {% endif %}
                             </ul>
                     </aside>

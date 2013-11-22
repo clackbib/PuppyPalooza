@@ -28,7 +28,7 @@ def add_puppy(request,puppy_id):
     count = 0
     items = CartItem.objects.filter(user = request.user)
     for i in items:
-        count = count + 1
+        count += 1
 
     request.session['cart_count'] = count
     return redirect("shop.views.shop_home")
@@ -36,11 +36,28 @@ def add_puppy(request,puppy_id):
 @login_required(login_url="home.views.home")
 def checkout(request):
     items = CartItem.objects.filter(user = request.user)
-    item_names = ""
+    checkout_dict = {
+        "business": "yourpaypalemail@example.com",
+        "invoice": "unique-invoice-id",
+        "item_name":"Stuff",
+        "notify_url": "http://www.example.com/your-ipn-location/",
+        "return_url": "http://www.example.com/your-return-location/",
+        "cancel_return": "http://www.example.com/your-cancel-location/",
+        }
     total = 0
+    count = 0
+    puppies_str = ""
     for i in items:
-        item_names += str(i.object.puppy_name)+" ,"
+        puppies_str += str(i.object.puppy_name) + ","
         total+= i.amount
+        count += 1
+
+    request.session['cart_count'] = count
+    checkout_dict['item_name'] = str(puppies_str)
+    checkout_dict['amount'] = str(total)
+    form = PayPalPaymentsForm(initial= checkout_dict)
+    if request.session['cart_count'] <=  0:
+        return redirect("home.views.home_page")
 
     return render(request, "shop/checkout.html", locals())
 

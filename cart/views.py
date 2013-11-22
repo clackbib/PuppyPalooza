@@ -1,7 +1,7 @@
 import json
 import logging
 import sys
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,redirect
 from django.template import RequestContext
 from django.conf import settings
 from django.http import HttpResponse
@@ -44,10 +44,11 @@ def remove_from_cart(request, itemid):
     total = 0
     for item in items:
         total += item.amount
-    return HttpResponse(json.dumps({
-            "status":"removed_from_cart",
-            "total": '%d' % (total),
-            }), mimetype='application/json')
+    # return HttpResponse(json.dumps({
+    #         "status":"removed_from_cart",
+    #         "total": '%d' % (total),
+    #         }), mimetype='application/json')
+    return redirect("shop.views.checkout")
 
 def payment_successful(request):
     '''

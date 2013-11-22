@@ -1,6 +1,18 @@
 {% extends "base/base.html" %}
 
 {% block main_article %}
-    {{ item_names }}
-    {{ total }}
+    <article class="main_article">
+    {% for i in items %}
+        <h1 class="checkout_element"> {{ i.object }}
+            <a href="{% url "cart.views.remove_from_cart" i.id %}"
+               class = "remove_from_cart">
+                Remove </a>
+        <span style = "float: right">${{ i.amount }}</span>
+        </h1>
+    {% endfor %}
+    <h1> Total:    <span style = "float: right">${{ total }}</span> </h1>
+    {{ form.render }}
+    </article>
+
+
 {% endblock %}

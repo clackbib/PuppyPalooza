@@ -65,7 +65,7 @@ body{
 }
 .login_form
 {
-    padding: 10px;
+    padding: 20px 10px;
     vertical-align: top;
     width:200px;
     border-radius: 10px;
@@ -100,5 +100,30 @@ body{
     color: white;
     text-shadow: 0 -1px 1px black;
 }
-
+.checkout_element
+{
+    border-bottom: dotted 1px dodgerblue;
+}
+.remove_from_cart
+{
+    float: right;
+    font-size: 10pt;
+    margin-left: 5px;
+    text-decoration: none;
+    color:white;
+    background-color: red;
+    border-radius: 10px;
+    padding:5px;
+    opacity:.9;
+    text-shadow: 0 -1px 1px black;
+}
+.page_title
+{
+    color:white;
+    background-color: dodgerblue;
+    text-shadow: 0 -1px 1px black;
+    padding: 5px 0px 5px 50px;
+    border-radius: 20px;
+    font-style: oblique;
+}
 
