@@ -131,4 +131,20 @@ body{
     border-top: dotted 1px black;
     padding-top: 20px;
 }
+li.rss
+{
+    background-image: url("/static/images/rss-icon.png");
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+	padding: 3px 0 3px 20px;
+	margin: .2em 0;
+}
+li.youtube
+{
+    background-image: url("/static/images/youtube-icon.png");
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+	padding: 3px 0 3px 20px;
+	margin: .2em 0;
+}
 

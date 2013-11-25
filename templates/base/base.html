@@ -36,8 +36,8 @@
             <h2>Hello {{ request.user.username }} !</h2>
             <a href="{% url "login.views.disconnect" %}"> <strong> Logout ! </strong> </a>
             <ul class="links">
-                <li> <a href="#">My Youtube Videos</a></li>
-                <li> <a href="#">RSS</a></li>
+                <li class="youtube"> <a href="#">My Youtube Videos</a></li>
+                <li class = "rss"> <a href="{% url "feed_puppies" %}">Latest Puppies RSS</a></li>
 
             </ul>
             </div>
@@ -49,6 +49,7 @@
                 <label for= "password"> Password </label>
                 <input type = "password" name =  "password" id = "password"/>
                 <input type="submit" value="Log in!"/>
+                <a href="{% url "login.views.register" %}"> Register!</a>
          </form>
      {% endif %}
 

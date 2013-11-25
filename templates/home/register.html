@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base/base.html" %}
 
-</body>
-</html>
+{% block main_article %}
+
+    <article class="main_article">
+        <form action = "#" method="POST" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = "submit" value = "Register!"/>
+        </form>
+    {% if error %}
+          <h3> {{ message }} </h3>
+    {% endif %}
+    </article>
+
+
+
+{% endblock %}

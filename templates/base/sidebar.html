@@ -2,7 +2,6 @@
     <ul>
         {% block links %}
         <li> <a href = "{% url "home.views.home_page" %}"> Home</a></li>
-        <li> <a href = ""> Gallery</a></li>
          <li> <a href = "{% url "shop.views.shop_home" %}"> Shop</a></li>
          <li> <a href = ""> Contact Us</a></li>
             {% if request.session.cart_count %}

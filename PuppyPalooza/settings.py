@@ -126,15 +126,66 @@ INSTALLED_APPS = (
     'shop',
     'paypal.standard.ipn',
     'cart',
+
+
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.dropbox',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.persona',
+    'allauth.socialaccount.providers.soundcloud',
+    'allauth.socialaccount.providers.stackexchange',
+    'allauth.socialaccount.providers.twitch',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.vimeo',
+    'allauth.socialaccount.providers.weibo',
+    #'django_youtube',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+#PAYPAL
 PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
 PAYPAL_EMAIL = "yourpaypalemail@example.com"
 PAYPAL_CURRENCY_CODE= ""
 PAYPAL_URL = ""
+
+#YOUTUBE
+YOUTUBE_AUTH_EMAIL = 'kaminoshinou@gmail.com'
+YOUTUBE_AUTH_PASSWORD = 'best1234'
+YOUTUBE_DEVELOPER_KEY = 'AI39si7yLI8pXmrynkObQhG4OeBmGc0m9p8UnUWLtbcJ_yavGIkDHz-_koWgO2FFdRRUSzIs1o8M9tG5tolo_WkOYtfqjQr6dQ'
+YOUTUBE_CLIENT_ID = 'client-id'
+
+#TEMPLATE PROCESSING
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+SITE_ID = 2
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+
+
+)
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
