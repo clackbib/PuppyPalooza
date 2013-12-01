@@ -4,6 +4,7 @@
         <li> <a href = "{% url "home.views.home_page" %}"> Home</a></li>
          <li> <a href = "{% url "shop.views.shop_home" %}"> Shop</a></li>
          <li> <a href = ""> Contact Us</a></li>
+         <li> <a href = '{% url "sourcecode.views.sourcecode" %}'> Source Code </a></li>
             {% if request.session.cart_count %}
                 <li class="cart_icon"> <a href="{% url "shop.views.checkout" %}"> Cart ({{ request.session.cart_count }})</a> </li>
             {% endif %}

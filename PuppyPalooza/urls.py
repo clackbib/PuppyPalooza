@@ -13,8 +13,10 @@ urlpatterns = patterns('',
     url(r'^shop/', include('shop.urls')),
     url(r'^cart/', include('cart.urls')),
     url(r'member/', include('login.urls')),
+    url(r'^code/', include('sourcecode.urls')),
     url(r'^feeds/puppies/$', LatestPuppyFeed(), name='feed_puppies'),
     (r'^accounts/', include('allauth.urls')),
+
     #url(r'^youtube/', include('django_youtube.urls')),
     # Examples:
     # url(r'^$', 'PuppyPalooza.views.home', name='home'),

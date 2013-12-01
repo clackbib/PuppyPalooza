@@ -124,6 +124,8 @@ INSTALLED_APPS = (
     'home',
     'login',
     'shop',
+
+
     'paypal.standard.ipn',
     'cart',
 

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Source code</title>
+    <style type="text/css">
+        strong
+        {
+            color:red;
+        }
+
+        </style>
+</head>
+<body>
+
+    <a href = "{% url "home.views.home_page" %}"> Back to Site </a>
+    <h1> <i>Api Setup</i></h1>
+    <p>
+        <pre>
+              <h2> Api Install and Information Setup</h2>
+
+                   INSTALLED_APPS = (
+      <h4> Defaults & Site (include RSS) </h4>
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'home',
+    'login',
+    'shop',
+
+     <h4> Paypal </h4>
+    'paypal.standard.ipn',
+
+       <h4> Shopping Car </h4>
+    'cart',
+
+
+        <h4> Social Network Auth </h4>
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.dropbox',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.persona',
+    'allauth.socialaccount.providers.soundcloud',
+    'allauth.socialaccount.providers.stackexchange',
+    'allauth.socialaccount.providers.twitch',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.vimeo',
+    'allauth.socialaccount.providers.weibo',
+    #'django_youtube',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+)
+#PAYPAL
+PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
+PAYPAL_EMAIL = "yourpaypalemail@example.com"
+PAYPAL_CURRENCY_CODE= ""
+PAYPAL_URL = ""
+
+#YOUTUBE
+YOUTUBE_AUTH_EMAIL = 'hidden;p'
+YOUTUBE_AUTH_PASSWORD = 'hidden ;p'
+YOUTUBE_DEVELOPER_KEY = 'AI39si7yLI8pXmrynkObQhG4OeBmGc0m9p8UnUWLtbcJ_yavGIkDHz-_koWgO2FFdRRUSzIs1o8M9tG5tolo_WkOYtfqjQr6dQ'
+YOUTUBE_CLIENT_ID = 'client-id'
+        </pre>
+    </p>
+
+<h1> <i>Api Calls</i></h1>
+
+<p>
+       <pre>
+            <h2> RSS </h2>
+            <h4> File: feeds.py </h4>
+            <p>
+from shop.models import Puppy  <strong># Get Puppies From Database</strong>
+from django.contrib.syndication.views import Feed <strong> # Import Feed API </strong>
+from django.core.urlresolvers import <strong> # For redirection </strong>
+
+
+class LatestPuppyFeed(Feed):
+    title = "Latest Puppies !"
+    link='' # URI of site
+    description='Latest Puppy Entries'
+
+    def items(self):
+        return Puppy.objects.all()[:5] <strong># Return 5 latest puppies inserted in the database </strong>
+
+    def item_description(self, item):
+        return item.description </strong># Include description as RSS body </strong>
+
+    def item_link(self, item):
+        return reverse('home.views.home_page')
+
+            </p>
+            <h2> Cart </h2>
+            <h4> File: shop/views.py </h4>
+        <p>
+            from cart.models import CartItem <strong>#import Cart Item Model </strong>
+
+            def add_puppy(request,puppy_id):
+            puppy = Puppy.objects.get(id = puppy_id)
+            CartItem.objects.add_to_cart(puppy,request.user, puppy.price,None) <strong># Add Puppy to Cart </strong>
+            count = 0
+            items = CartItem.objects.filter(user = request.user) <strong>#Show Cart Items filtered by current User</strong>
+            for i in items:
+                count += 1
+
+            request.session['cart_count'] = count <strong>#Update session cart count</strong>
+            return redirect("shop.views.shop_home")
+    </p>
+        <h2> PayPal </h2>
+        <h4> File: shop/views.py </h4>
+        <p>
+             def shop_home(request):
+    puppies = Puppy.objects.all() # <strong>Get all Puppies from Database </strong>
+
+    for p in puppies: <strong>#Loop through puppies, create an individual payment for for each</strong>
+        p.buy_form = PayPalPaymentsForm(initial={
+        "business": "yourpaypalemail@example.com",
+        "amount": str(p.price),
+        "item_name": str(p.puppy_name),
+        "invoice": "unique-invoice-id",
+        "notify_url": "http://www.example.com/your-ipn-location/",
+        "return_url": "http://www.example.com/your-return-location/",
+        "cancel_return": "http://www.example.com/your-cancel-location/",
+        })
+
+    return render(request, "shop/shop_home.html", locals())
+        </p>
+
+        <h2> Social Auth </h2>
+        <h4> File: templates/base/base.html </h4>
+
+            {% verbatim  %}
+            h5> Providers: /h5 <br/>
+                a href= <strong>"{% provider_login_url "facebook" next="/shop/" %}"</strong> class="btn-auth btn-facebook">Sign in with <b>Facebook</b> /a
+                a href=<strong>"{% provider_login_url "github" next="/shop/" %}"</strong> class="btn-auth btn-github">Sign in with <b>Github</b> /a
+                 h5> Temporary Down Providers /h5 <br/>
+
+                  a href="<strong>{% provider_login_url "soundcloud" next="/shop/" %}</strong>" class="btn-auth">Sign in with <b>SoundCloud</b> /a
+                 a href=<strong>"{% provider_login_url "google" next="/shop/" %}"</strong> class="btn-auth btn-google">Sign in with <b>Google</b> /a
+            {% endverbatim %}
+            <h4> Api ID, & Secret Setup </h4>
+            <img src="{% static "images/social_setup_screen.png" %}"/>
+        </pre>
+</body>
+</html>
