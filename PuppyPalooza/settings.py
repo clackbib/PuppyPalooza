@@ -1,5 +1,5 @@
 # Django settings for PuppyPalooza project.
-from dev_settings import *
+from PuppyPalooza.dev_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
